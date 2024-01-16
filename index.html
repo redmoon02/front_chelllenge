@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/combine/npm/pickerjs@1.2.1/dist/picker.min.js,npm/easytimer.js@4.3.0/dist/easytimer.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css,npm/pickerjs@1.2.1/dist/picker.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <div id="Countdowntimer">
+        <div id="countdown">00:00:00</div>
+         <div id="timeInput">
+            <label for="hours">Hours </label>
+            <input type="number" id="hours" min="0" value="0">
+            
+            <label for="minutes">Minutes </label>
+            <input type="number" id="minutes" min="0" max="59" value="0">
+            
+            <label for="seconds">Seconds </label>
+            <input type="number" id="seconds" min="0" max="59" value="0">
+        </div>
+        <div id="controlbt">
+            <button class="my_bt" onclick="startCount()">Start</button>
+            <button class="my_bt" onclick="stopCount()">Stop</button>
+            <button class="my_bt" onclick="resetCount()">Reset</button>
+        </div>
+    </div>
+    <script src="countdown.js"></script>
+</body>
+</html>
