@@ -70,10 +70,10 @@ const onClickCompleteAll = () => {
     setLeftItems()
 }
 
-const appendTodos = (text) => {
+const appendTodos = (text, priority) => {
     const newId = id + 1; // 기존에 i++ 로 작성했던 부분을 setId()를 통해 id값을 갱신하였다.
     setId(newId)
-    const newTodos = getAllTodos().concat({id: newId, isCompleted: false, content: text })
+    const newTodos = getAllTodos().concat({id: newId, isCompleted: false, content: text, priority: priority.toLowerCase() })
     // const newTodos = [...getAllTodos(), {id: newId, isCompleted: false, content: text }]
     setTodos(newTodos)
     setLeftItems()
@@ -149,6 +149,10 @@ const paintTodo = (todo) => {
     todoElem.addEventListener('dblclick', (event) => onDbclickTodo(event, todo.id))
     todoElem.innerText = todo.content;
 
+    const priorityElem = document.createElement('div');
+    priorityElem.classList.add('priority');
+    priorityElem.innerText = `${todo.priority}`;
+
     const delBtnElem = document.createElement('button');
     delBtnElem.classList.add('delBtn');
     delBtnElem.addEventListener('click', () =>  deleteTodo(todo.id))
@@ -161,6 +165,7 @@ const paintTodo = (todo) => {
 
     todoItemElem.appendChild(checkboxElem);
     todoItemElem.appendChild(todoElem);
+    todoItemElem.appendChild(priorityElem);
     todoItemElem.appendChild(delBtnElem);
 
     todoListElem.appendChild(todoItemElem);
@@ -204,6 +209,15 @@ const onClickShowTodosType = (e) => {
 const init = () => {
     todoInputElem.addEventListener('keypress', (e) =>{
         if( e.key === 'Enter' ){
+            const prioritySelect = document.querySelector('.priority-select');
+            const priority = prioritySelect.value;
+            
+            if (e.target.value.trim() !== '' && ['low', 'medium', 'high'].includes(priority.toLowerCase())) {
+                appendTodos(e.target.value, priority);
+                todoInputElem.value = '';
+            } else {
+                alert('Invalid input. Please enter a task and select a valid priority (low, medium, high).');
+            }
             appendTodos(e.target.value); todoInputElem.value ='';
         }
     })
