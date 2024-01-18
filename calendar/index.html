@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Interactive Calendar</title>
+</head>
+<body>
+    <div class="calendar-container">
+        <h1>Memo on Calendar</h1>
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <h2 id="current-month-year"></h2>
+            <button id="next-month">&gt;</button>
+        </div>
+        <div class="weekdays"></div>
+        <div id="calendar"></div>
+        <div id="memo-container">
+            <textarea id="memo-input" placeholder="Write your memo here..."></textarea>
+            <button id="save-memo">Save Memo</button>
+        </div>
+    </div>
+    <script src="calendar.js"></script>
+</body>
+</html>
+
